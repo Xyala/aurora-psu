@@ -1,5 +1,5 @@
-//TO BE UPDATED. Currently pointing to my fork with syntax fix on nanoleaf-aurora-api v1.2.0
-var AuroraApi = require('../nanoleaf-aurora-api/index.js');
+//Thanks Darrent for this lib : https://github.com/darrent/nanoleaf-aurora-api
+var AuroraApi = require('nanoleaf-aurora-client');
 //Import color steps in RGB. Step gradient made with http://www.perbang.dk/rgbgradient/
 var ColorSteps = require('./color_1500.js');
 
