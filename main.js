@@ -1,7 +1,6 @@
+var AuroraApi = require('../nanoleaf-aurora-api/index.js');
 
-
-var AuroraApi = require('nanoleaf-aurora-client');
-
+  //Later this should be implemented and read directly through env variables.
 var api = new AuroraApi({
     host: '192.168.1.125',
     base: '/api/v1/',
@@ -9,6 +8,7 @@ var api = new AuroraApi({
     accessToken: 'z6jQ0SLy14vKhR9Xj5HcVwakRB4AgJtd'
   });
 
+  // Read from Aurora what the current color mode is
   api.getColourMode()
   .then(function(colourMode) {
     console.log('Colour mode: ' + colourMode);
@@ -17,20 +17,12 @@ var api = new AuroraApi({
     console.error(err);
   });
 
-// from 0 to 359
-  api.setHue(20)
+
+  // Set panel color with RGB values.
+  api.setRGB(228,150,38)
     .then(function() {
-      console.log('Success for Hue!');
+      console.log('Success for RGB!');
     })
     .catch(function(err) {
       console.error(err);
     });
-
-// from 0 to 100
-    api.setSat(100)
-      .then(function() {
-        console.log('Success for Sat!');
-      })
-      .catch(function(err) {
-        console.error(err);
-      });
