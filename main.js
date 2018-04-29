@@ -16,23 +16,31 @@ var api = new AuroraApi({
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
-  // Read from Aurora what the current color mode is
-  api.getColourMode()
-  .then(function(colourMode) {
-    console.log('Colour mode: ' + colourMode);
-  })
-  .catch(function(err) {
-    console.error(err);
-  })
 
-  // Set panel color with RGB values.
-  api.setRGB(228,150,38)
-    .then(function() {
-      console.log('Success for RGB!');
+
+// Loop to test the changing of the color depending on some random value - simulation of PSU load.
+  function loop() {
+
+    var psuWatts = randomNumber(0, 250); //Get some number between 0 and 1200
+    console.log(psuWatts);
+
+    // Read from Aurora what the current color mode is
+    api.getColourMode()
+    .then(function(colourMode) {
+      console.log('Colour mode: ' + colourMode);
     })
     .catch(function(err) {
       console.error(err);
-    });
+    })
 
-    var randomValue = randomNumber(30, 50);
-    console.log(randomValue);
+    // Set panel color with RGB values.
+    api.setRGB(psuWatts,150,38)
+      .then(function() {
+        console.log('Success for RGB!');
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+  }
+
+  setInterval(loop, 1000);
