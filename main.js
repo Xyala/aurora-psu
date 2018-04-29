@@ -9,6 +9,13 @@ var api = new AuroraApi({
     accessToken: 'z6jQ0SLy14vKhR9Xj5HcVwakRB4AgJtd'
   });
 
+  //get some random stuff generated.
+  var randomNumber = function(min, max) {
+    min = typeof min !== 'undefined' ? min : 0;
+    max = typeof max !== 'undefined' ? max : 100;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
   // Read from Aurora what the current color mode is
   api.getColourMode()
   .then(function(colourMode) {
@@ -27,11 +34,5 @@ var api = new AuroraApi({
       console.error(err);
     });
 
-  var randomValue = randomNumber(30, 50);
-
-    //get some random stuff generated.
-    var randomNumber = function(min, max) {
-      min = typeof min !== 'undefined' ? min : 0;
-      max = typeof max !== 'undefined' ? max : 100;
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    };
+    var randomValue = randomNumber(30, 50);
+    console.log(randomValue);
